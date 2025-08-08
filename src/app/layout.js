@@ -17,12 +17,21 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const patternSvg = `<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="1.5" fill="gray"/></svg>`;
+  const encodedSvg = `data:image/svg+xml;base64,${btoa(patternSvg)}`;
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div
+          className="min-h-screen flex items-center justify-center bg-green-100"
+          style={{
+            backgroundImage: `url(${encodedSvg})`,
+          }}
+        >
+          {children}
+        </div>
       </body>
     </html>
   );
