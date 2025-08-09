@@ -2,7 +2,7 @@
 
 import API from "@/utils/api-url";
 import { apiFetcher } from "@/utils/fetcher";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
@@ -23,6 +23,14 @@ const LoginPage = () => {
             console.log(error)
         }
     };
+
+    useEffect(() => {
+        const getMe = async () => {
+            const res = await apiFetcher('/auth/me')
+            console.log(res)
+        }
+        getMe()
+    }, [])
 
     return (
 

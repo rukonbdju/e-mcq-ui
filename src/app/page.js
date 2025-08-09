@@ -1,11 +1,10 @@
 import API from "@/utils/api-url";
 import { cookies } from "next/headers";
-import Image from "next/image";
 import Link from "next/link";
 
 export default async function Home() {
   const cookieStore = cookies();
-  const res = await fetch(API + '/auth/me', { headers: { Cookie: cookieStore.toString() } })
+  const res = await fetch(API + '/auth/me', { headers: { Cookie: cookieStore.toString() }, credentials: 'include' })
   const result = await res.json()
   console.log(result)
   return (
@@ -24,9 +23,7 @@ export default async function Home() {
         <p className="mt-2 text-base sm:text-lg lg:text-xl text-gray-600 font-medium">
           Take and create MCQ exams anytime, anywhere. For students and teachers.
         </p>
-
         <div className="mt-4 flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
-
           <Link href={'/login'} className="px-6 py-3 text-lg font-semibold text-white bg-blue-600 rounded-xl shadow-lg hover:bg-blue-500 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2B6CB0]">
             Login
           </Link>
