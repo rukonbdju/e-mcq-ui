@@ -19,11 +19,11 @@ const AuthWrapper = ({ children }) => {
     }, [dispatch]);
 
     // Redirect if authenticated
-    useEffect(() => {
+    /* useEffect(() => {
         if (isAuthenticated) {
             router.push('/dashboard');
         }
-    }, [isAuthenticated, router]);
+    }, [isAuthenticated, router]); */
 
     // Show loading overlay if fetching auth state
     if (isLoading) {
