@@ -1,5 +1,6 @@
 'use client'
 
+import Link from "next/link";
 import { useState } from "react";
 
 const mockExams = [
@@ -65,10 +66,12 @@ const ExamsPage = () => {
                     <h2 className="text-2xl font-bold text-slate-800">My Exams</h2>
                     <p className="text-sm text-slate-500 mt-1">Manage, create, and review all your exams.</p>
                 </div>
-                <button className="mt-4 sm:mt-0 px-4 py-2 bg-teal-600 text-white text-sm font-semibold rounded-lg shadow-md hover:bg-teal-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
-                    Create New Exam
-                </button>
+                <Link href={'/teacher/exams/new'}>
+                    <button className="mt-4 sm:mt-0 px-4 py-2 bg-teal-600 text-white text-sm font-semibold rounded-lg shadow-md hover:bg-teal-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+                        Create New Exam
+                    </button>
+                </Link>
             </div>
 
             {/* Tabs and Filters */}
