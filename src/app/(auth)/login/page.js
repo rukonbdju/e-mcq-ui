@@ -1,11 +1,17 @@
 'use client'
 
+import { authSelector, setUser } from "@/features/auth/authSlice";
+import { getLoggedInUser } from "@/features/auth/authThunks";
 import { apiFetcher } from "@/utils/fetcher";
 import { useRouter } from "next/navigation";
 
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const LoginPage = () => {
+    const dispatch = useDispatch()
+    const { auth } = useSelector(authSelector)
+    console.log(auth)
     const router = useRouter()
     const [error, setError] = useState(null)
     const [email, setEmail] = useState('');
@@ -23,6 +29,7 @@ const LoginPage = () => {
             })
             console.log(result)
             if (result.success) {
+                dispatch(setUser(result.data))
                 const route = "/" + result.data.role.toLowerCase()
                 router.push(route)
             }
@@ -31,14 +38,6 @@ const LoginPage = () => {
             setError(error.message)
         }
     };
-
-    useEffect(() => {
-        const getMe = async () => {
-            const res = await apiFetcher('/auth/me')
-            console.log(res)
-        }
-        getMe()
-    }, [])
 
     return (
         <main>
