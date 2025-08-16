@@ -11,7 +11,7 @@ function DashboardLayout({ children }) {
         // The <html>, <head>, and <body> tags were removed to fix the DOM nesting error.
         <div className="flex h-screen overflow-hidden bg-slate-50 font-sans">
             <Sidebar isOpen={isSidebarOpen} />
-            <div className="flex-1 flex flex-col overflow-hidden">
+            <div className="flex-1 flex flex-col overflow-y-auto">
                 <Header onMenuClick={() => setSidebarOpen(!isSidebarOpen)} />
                 {children}
             </div>

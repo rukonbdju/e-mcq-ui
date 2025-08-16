@@ -1,5 +1,5 @@
 const Header = ({ onMenuClick }) => (
-    <header className="flex items-center justify-between p-4 bg-white border-b border-slate-300">
+    <header className="flex sticky top-0 z-10 items-center justify-between p-4 bg-white border-b border-slate-300">
         <div className="flex items-center">
             < button onClick={onMenuClick} className="text-slate-500 focus:outline-none md:hidden mr-4" >
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" /></svg>

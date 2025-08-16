@@ -1,12 +1,11 @@
 'use client'
-
-import API from "@/utils/api-url";
 import { apiFetcher } from "@/utils/fetcher";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const RegistrationPage = () => {
+    const router = useRouter()
     const [error, setError] = useState(null)
     const [formData, setFormData] = useState({
         name: '',
@@ -28,10 +27,10 @@ const RegistrationPage = () => {
                 method: 'POST',
                 body: formData
             })
-            if (result.success) {
-                redirect(`${result.data.role.toLowercase()}`)
-            }
             console.log(result)
+            if (result.success) {
+                router.push(`/${result.data.role.toLowerCase()}`)
+            }
 
         } catch (error) {
             console.log(error.message)
